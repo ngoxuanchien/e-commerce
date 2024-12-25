@@ -1,0 +1,31 @@
+quarkus:
+  application:
+    name: post-product-service
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: 0963441360
+    jdbc:
+      url: jdbc:postgresql://192.168.1.21:5432/product_database
+  flyway:
+    migrate-at-start: true
+  hibernate-orm:
+    database:
+      generation: none
+  http:
+    port: 0
+rabbitmq-host: 192.168.1.21
+rabbitmq-port: 5672
+rabbitmq-username: myuser
+rabbitmq-password: secret
+
+mp:
+  messaging:
+    incoming:
+      product-request:
+        connector: smallrye-rabbitmq
+        content-type-override: text/plain
+        exchange:
+          name: post-product-request
+        queue:
+          name: request-queue

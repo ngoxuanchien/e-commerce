@@ -1,0 +1,6 @@
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\brokermq\consumer\PostProductConsumer.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\brokermq\producer\PostProductProducer.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\event\EventType.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\event\PostEvent.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\service\category\CreateCategoryEventProcessor.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\service\PostEventProcessService.java
