@@ -11,7 +11,7 @@ quarkus:
     migrate-at-start: true
   hibernate-orm:
     database:
-      generation: none
+      generation: validate
   http:
     port: 0
 rabbitmq-host: 192.168.1.21
@@ -26,6 +26,11 @@ mp:
         connector: smallrye-rabbitmq
         content-type-override: text/plain
         exchange:
-          name: post-product-request
+          name: product-request
         queue:
-          name: request-queue
+          name: product-request
+    outgoing:
+      product-response:
+        connector: smallrye-rabbitmq
+        exchange:
+          name: product-response

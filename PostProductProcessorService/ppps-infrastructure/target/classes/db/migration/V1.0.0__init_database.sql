@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS product (
-       id SERIAL PRIMARY KEY,
+       id BIGSERIAL PRIMARY KEY,
        name VARCHAR(255) NOT NULL,
        description TEXT,
        available_quantity DOUBLE PRECISION,
@@ -13,7 +13,7 @@ COMMENT ON COLUMN product.available_quantity IS 'Available quantity';
 COMMENT ON COLUMN product.price IS 'Product price';
 
 CREATE TABLE IF NOT EXISTS category (
-        id SERIAL PRIMARY KEY,
+        id BIGSERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         description TEXT
 );

@@ -19,6 +19,9 @@ public class PostEvent {
     private LocalDateTime timestamp;
     private Object payload;
 
-    @JsonProperty("routing_key")
-    private String routingKey;
+    @JsonProperty("request_id")
+    private String requestId;
+
+    @JsonProperty("response_queue")
+    private ResponseQueue responseQueue;
 }

@@ -9,11 +9,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>post-product-start</module>
-        <module>post-product-controller</module>
-        <module>post-product-domain</module>
-        <module>post-product-application</module>
-        <module>post-product-infrastructure</module>
+        <module>pp-start</module>
+        <module>pp-controller</module>
+        <module>pp-domain</module>
+        <module>pp-application</module>
+        <module>pp-infrastructure</module>
         <module>pps-common</module>
     </modules>
 

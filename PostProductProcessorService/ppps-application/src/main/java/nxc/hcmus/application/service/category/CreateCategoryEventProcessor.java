@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import nxc.hcmus.application.brokermq.producer.PostProductProducer;
 import nxc.hcmus.application.event.EventType;
+import nxc.hcmus.application.event.MessageResponse;
 import nxc.hcmus.application.event.PostEvent;
 import nxc.hcmus.application.service.PostEventProcessService;
 import nxc.hcmus.common.util.JsonUtil;
@@ -29,7 +30,12 @@ public class CreateCategoryEventProcessor implements PostEventProcessService {
         log.info("Process create category event: {}", event);
         Category category = jsonUtil.convertToObject(event.getPayload(), Category.class);
         var newCategory = categoryDomainService.createCategory(category);
-        postProductProducer.sendEvent(event.getRoutingKey(), jsonUtil.convertObjectToJson(newCategory));
+        var messageResponse = MessageResponse.builder()
+                .id(event.getId())
+                .requestId(event.getRequestId())
+                .payload(newCategory)
+                .build();
+        postProductProducer.sendEvent(event.getResponseQueue().getRoutingKey(), jsonUtil.convertObjectToJson(messageResponse));
     }
 
     @Override

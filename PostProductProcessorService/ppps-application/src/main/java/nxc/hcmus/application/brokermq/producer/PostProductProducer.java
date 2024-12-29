@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @ApplicationScoped
 public class PostProductProducer {
 
-    @Channel("post-product-response")
+    @Channel("product-response")
     Emitter<String> emitter;
 
     public void sendEvent(String routingKey, String payload) {
