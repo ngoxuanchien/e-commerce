@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageResponse<T> {
-    private Long id;
     @JsonProperty("request_id")
     private String requestId;
     private T payload;

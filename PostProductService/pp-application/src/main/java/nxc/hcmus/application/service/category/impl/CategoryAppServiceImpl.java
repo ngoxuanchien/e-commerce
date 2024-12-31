@@ -8,10 +8,8 @@ import nxc.hcmus.application.model.category.CategoryResponse;
 import nxc.hcmus.application.service.category.CategoryAppService;
 import nxc.hcmus.application.service.deferresult.DeferredResultService;
 import nxc.hcmus.application.service.mapper.CategoryAppMapper;
-import nxc.hcmus.application.service.mapper.PostEventMapper;
-import nxc.hcmus.common.util.UuidGeneratorUtil;
-import nxc.hcmus.domain.service.event.EventDomainService;
-import nxc.hcmus.domain.model.events.category.CreateCategoryEvent;
+import nxc.hcmus.application.service.mapper.RequestEventMapper;
+import nxc.hcmus.domain.service.category.CategoryDomainService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -23,31 +21,32 @@ import java.util.Optional;
 @Slf4j
 public class CategoryAppServiceImpl implements CategoryAppService {
 
-    private final EventDomainService eventDomainService;
+    private final CategoryDomainService categoryDomainService;
     private final CategoryAppMapper categoryAppMapper;
 
     private final PostProductProducer postProducer;
-    private final PostEventMapper postEventMapper;
-    private final UuidGeneratorUtil uuidGeneratorUtil;
     private final DeferredResultService deferredResultService;
+    private final RequestEventMapper requestEventMapper;
 
     @Override
     public CategoryResponse createCategory(CategoryRequest request, DeferredResult<ResponseEntity<?>> deferredResult) {
         log.info("Create category: {}", request);
-        final var requestId = uuidGeneratorUtil.generateUuid();
         var category = Optional.ofNullable(request)
                 .map(categoryAppMapper::categoryRequestToCategory)
                 .orElseThrow(() -> new RuntimeException("Category request is null"));
 
-        var event = new CreateCategoryEvent(category);
-        event.setRequestId(requestId);
-        deferredResultService.save(requestId, deferredResult);
-        Optional.of(event)
-                .map(eventDomainService::createEvent)
-                .map(postEventMapper::eventToPostEvent)
-                .ifPresent(postProducer::sendPostProduct);
+        var createCategoryRequest = categoryDomainService.createCategory(category);
+        deferredResult.onTimeout(() -> {
+            log.info("Timeout create category: {}", request);
+            deferredResult.setResult(
+                    ResponseEntity.accepted()
+                            .body(createCategoryRequest)
+            );
+        });
 
-        // Todo: continue to implement the logic here
+        deferredResultService.save(createCategoryRequest.getRequestId().toString(), deferredResult);
+        postProducer.sendPostRequest(requestEventMapper.requestToRequestEvent(createCategoryRequest));
+
         return categoryAppMapper.categoryToCategoryResponse(category);
     }
 }

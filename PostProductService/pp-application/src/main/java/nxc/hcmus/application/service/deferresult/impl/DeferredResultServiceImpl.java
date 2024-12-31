@@ -20,11 +20,22 @@ public class DeferredResultServiceImpl implements DeferredResultService {
 
 
     @Override
-    public DeferredResult<ResponseEntity<?>> configDeferredResult(String key) {
+    public DeferredResult<ResponseEntity<?>> configDeferredResult() {
         DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>(5000L);
 
         deferredResult.onTimeout(() -> {
             deferredResult.setResult(ResponseEntity.accepted().build());
+        });
+
+        return deferredResult;
+    }
+
+    @Override
+    public DeferredResult<ResponseEntity<?>> createDefaultDeferredResult() {
+        DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>(5000L);
+
+        deferredResult.onTimeout(() -> {
+            log.info("Timeout create default deferred result");
         });
 
         return deferredResult;
@@ -41,7 +52,13 @@ public class DeferredResultServiceImpl implements DeferredResultService {
     }
 
     @Override
-    public void save(String key, DeferredResult<ResponseEntity<?>> deferredResult) {
+    public void save(String key, DeferredResult<?> deferredResult) {
         deferredResultInMemoryRepository.put(key, deferredResult);
+    }
+
+    @Override
+    public void setOnTimeout(String key, Runnable onTimeout) {
+        Optional.ofNullable(deferredResultInMemoryRepository.get(key))
+                .ifPresent(deferredResult -> deferredResult.onTimeout(onTimeout));
     }
 }

@@ -10,7 +10,7 @@ import nxc.hcmus.application.event.PostEvent;
 import nxc.hcmus.application.service.PostEventProcessService;
 import nxc.hcmus.common.util.JsonUtil;
 import nxc.hcmus.domain.model.entity.Category;
-import nxc.hcmus.domain.service.CategoryDomainService;
+import nxc.hcmus.domain.service.category.CategoryDomainService;
 
 @Slf4j
 @ApplicationScoped
@@ -31,7 +31,6 @@ public class CreateCategoryEventProcessor implements PostEventProcessService {
         Category category = jsonUtil.convertToObject(event.getPayload(), Category.class);
         var newCategory = categoryDomainService.createCategory(category);
         var messageResponse = MessageResponse.builder()
-                .id(event.getId())
                 .requestId(event.getRequestId())
                 .payload(newCategory)
                 .build();

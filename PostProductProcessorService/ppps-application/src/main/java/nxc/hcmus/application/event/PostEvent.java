@@ -7,20 +7,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostEvent {
-    private Long id;
-    private EventType type;
-    private LocalDateTime timestamp;
-    private Object payload;
 
     @JsonProperty("request_id")
     private String requestId;
+
+    private EventType type;
+
+    private ZonedDateTime timestamp;
+
+    private Object payload;
 
     @JsonProperty("response_queue")
     private ResponseQueue responseQueue;

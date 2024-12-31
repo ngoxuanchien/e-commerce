@@ -26,8 +26,10 @@ public abstract class AbstractRequest {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID requestId;
 
+    @Enumerated(EnumType.STRING)
     private RequestType type;
 
+    @Enumerated(EnumType.STRING)
     private RequestStatus status;
 
     @Convert(converter = ObjectConverter.class)
@@ -40,6 +42,11 @@ public abstract class AbstractRequest {
         this.type = type;
         this.payload = payload;
         this.status = RequestStatus.PENDING;
+    }
+
+    public AbstractRequest accepted() {
+        status = RequestStatus.ACCEPTED;
+        return this;
     }
 }
 

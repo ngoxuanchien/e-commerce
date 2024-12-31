@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Builder
@@ -14,10 +16,8 @@ import lombok.*;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
-    @SequenceGenerator(name = "category_id_seq", sequenceName = "category_id_seq", allocationSize = 1)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String name;
     private String description;
-//    private List<Product> products;
 }

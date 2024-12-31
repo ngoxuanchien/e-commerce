@@ -6,8 +6,11 @@ import nxc.hcmus.application.brokermq.rabbitmq.consumer.PostProductConsumer;
 import nxc.hcmus.application.model.event.PostResponseEvent;
 import nxc.hcmus.application.service.deferresult.DeferredResultService;
 import nxc.hcmus.common.util.JsonUtil;
+import nxc.hcmus.domain.service.request.RequestDomainService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -15,6 +18,8 @@ import org.springframework.stereotype.Component;
 public class PostProductConsumerImpl implements PostProductConsumer {
 
     private final DeferredResultService deferredResultService;
+
+    private final RequestDomainService requestDomainService;
 
     private final JsonUtil jsonUtil;
 
@@ -24,5 +29,6 @@ public class PostProductConsumerImpl implements PostProductConsumer {
         System.out.println("Received message: " + message);
         var postResponse = jsonUtil.convertJsonToObject(message, PostResponseEvent.class);
         deferredResultService.setResult(postResponse.getRequestId(), postResponse.getPayload());
+        requestDomainService.requestAccepted(UUID.fromString(postResponse.getRequestId()));
     }
 }

@@ -5,6 +5,7 @@ import nxc.hcmus.application.model.category.CategoryResponse;
 import nxc.hcmus.application.service.category.CategoryAppService;
 import nxc.hcmus.application.model.category.CategoryRequest;
 import nxc.hcmus.application.service.deferresult.DeferredResultService;
+import nxc.hcmus.domain.service.category.CategoryDomainService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +28,7 @@ public class CategoryController {
     public DeferredResult<ResponseEntity<?>> createCategory(
             @RequestBody CategoryRequest categoryRequest
     ) {
-        var requestId = UUID.randomUUID().toString();
-        DeferredResult<ResponseEntity<?>> deferredResult = deferredResultService.configDeferredResult(requestId);
+        DeferredResult<ResponseEntity<?>> deferredResult = deferredResultService.configDeferredResult();
         categoryAppService.createCategory(categoryRequest, deferredResult);
         return deferredResult;
     }

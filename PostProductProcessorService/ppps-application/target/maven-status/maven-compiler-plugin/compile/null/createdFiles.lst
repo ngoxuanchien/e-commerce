@@ -1,10 +1,11 @@
+nxc\hcmus\application\service\product\CreateProductEventProcessor.class
+nxc\hcmus\application\event\PostEvent$PostEventBuilder.class
+nxc\hcmus\application\event\MessageResponse.class
+nxc\hcmus\application\event\ResponseQueue$ResponseQueueBuilder.class
 nxc\hcmus\application\event\PostEvent.class
 nxc\hcmus\application\service\category\CreateCategoryEventProcessor.class
 nxc\hcmus\application\brokermq\producer\PostProductProducer.class
-nxc\hcmus\application\event\PostEvent$PostEventBuilder.class
 nxc\hcmus\application\service\PostEventProcessService.class
-nxc\hcmus\application\event\MessageResponse.class
-nxc\hcmus\application\event\ResponseQueue$ResponseQueueBuilder.class
 nxc\hcmus\application\event\ResponseQueue.class
 nxc\hcmus\application\brokermq\consumer\PostProductConsumer.class
 nxc\hcmus\application\event\EventType.class

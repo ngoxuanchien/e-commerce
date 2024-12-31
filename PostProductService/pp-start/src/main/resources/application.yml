@@ -5,6 +5,7 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+    open-in-view: false
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
@@ -21,7 +22,9 @@ spring:
     port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USERNAME:myuser}
     password: ${RABBITMQ_PASSWORD:secret}
-
+  threads:
+    virtual:
+      enabled: true
 app:
   rabbitmq:
     request:

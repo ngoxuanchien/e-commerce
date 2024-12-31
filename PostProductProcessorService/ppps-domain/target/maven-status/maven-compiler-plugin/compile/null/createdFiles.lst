@@ -1,7 +1,10 @@
-nxc\hcmus\domain\service\CategoryDomainService.class
+nxc\hcmus\domain\service\category\CategoryDomainService.class
 nxc\hcmus\domain\repository\CategoryRepository.class
 nxc\hcmus\domain\model\entity\Product.class
+nxc\hcmus\domain\repository\ProductRepository.class
+nxc\hcmus\domain\service\category\impl\CategoryDomainServiceImpl.class
+nxc\hcmus\domain\service\product\impl\ProductDomainServiceImpl.class
 nxc\hcmus\domain\model\entity\Category$CategoryBuilder.class
 nxc\hcmus\domain\model\entity\Product$ProductBuilder.class
 nxc\hcmus\domain\model\entity\Category.class
-nxc\hcmus\domain\service\impl\CategoryDomainServiceImpl.class
+nxc\hcmus\domain\service\product\ProductDomainService.class

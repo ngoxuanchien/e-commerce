@@ -1,5 +1,8 @@
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\model\entity\Category.java
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\model\entity\Product.java
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\repository\CategoryRepository.java
-E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\CategoryDomainService.java
-E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\impl\CategoryDomainServiceImpl.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\repository\ProductRepository.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\category\CategoryDomainService.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\category\impl\CategoryDomainServiceImpl.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\product\impl\ProductDomainServiceImpl.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-domain\src\main\java\nxc\hcmus\domain\service\product\ProductDomainService.java

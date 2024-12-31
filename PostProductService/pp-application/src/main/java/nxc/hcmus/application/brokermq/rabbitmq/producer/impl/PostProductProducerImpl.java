@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import nxc.hcmus.application.brokermq.rabbitmq.producer.PostProductProducer;
 import nxc.hcmus.application.model.event.PostRequestEvent;
+import nxc.hcmus.application.model.event.RequestEvent;
 import nxc.hcmus.application.model.event.ResponseQueue;
 import nxc.hcmus.common.util.JsonUtil;
 import nxc.hcmus.infrastructure.config.rabbitmq.RabbitMQProperties;
@@ -30,12 +31,14 @@ public class PostProductProducerImpl implements PostProductProducer {
                 .build();
     }
 
-    // todo: implement the method to send post product
     @Override
-    public void sendPostProduct(PostRequestEvent event) {
-        event.setResponseQueue(responseQueue);
+    public void sendPostRequest(RequestEvent requestEvent) {
+        requestEvent.setResponseQueue(responseQueue);
 
-        String payload = jsonUtil.convertObjectToJson(event);
+        send(jsonUtil.convertObjectToJson(requestEvent));
+    }
+
+    private void send(String payload) {
         rabbitTemplate.convertAndSend(
                 rabbitMQProperties.getRequestExchange(),
                 "",

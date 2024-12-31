@@ -1,9 +1,13 @@
 package nxc.hcmus.application.event;
 
-public enum EventType {
-    CREATE_CATEGORY("CREATE_CATEGORY");
+import lombok.Getter;
 
-    private String value;
+@Getter
+public enum EventType {
+    CREATE_CATEGORY("CREATE_CATEGORY"),
+    CREATE_PRODUCT("CREATE_PRODUCT");
+
+    private final String value;
 
     EventType(String value) {
         this.value = value;

@@ -6,3 +6,4 @@ E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-applicat
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\event\ResponseQueue.java
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\service\category\CreateCategoryEventProcessor.java
 E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\service\PostEventProcessService.java
+E:\workspace\2024\MyProject\E-commerce\PostProductProcessorService\ppps-application\src\main\java\nxc\hcmus\application\service\product\CreateProductEventProcessor.java

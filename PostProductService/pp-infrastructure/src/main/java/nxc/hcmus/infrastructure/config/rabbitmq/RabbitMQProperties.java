@@ -6,10 +6,9 @@ import lombok.RequiredArgsConstructor;
 import nxc.hcmus.infrastructure.config.service.ServiceProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-@Configuration
 @Getter
+@Configuration
 @RequiredArgsConstructor
 public class RabbitMQProperties {
 
