@@ -10,18 +10,25 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:root1234}
     driver-class-name: org.postgresql.Driver
+#    test
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 30000
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USERNAME:myuser}
     password: ${RABBITMQ_PASSWORD:secret}
 
-rabbitmq:
-  request:
-    exchange: product-request
-  response:
-    exchange: product-response
-    queue:
-      name: product-response
+app:
+  rabbitmq:
+    request:
+      exchange: product-request
+    response:
+      exchange: product-response
+      queue:
+        name: product-response
 server:
   port: 8081

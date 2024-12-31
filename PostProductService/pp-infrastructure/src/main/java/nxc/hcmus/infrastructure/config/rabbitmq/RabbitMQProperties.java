@@ -15,13 +15,13 @@ public class RabbitMQProperties {
 
     private final ServiceProperties serviceProperties;
 
-    @Value("${rabbitmq.request.exchange}")
+    @Value("${app.rabbitmq.request.exchange}")
     private String requestExchange;
 
-    @Value("${rabbitmq.response.exchange}")
+    @Value("${app.rabbitmq.response.exchange}")
     private String responseExchange;
 
-    @Value("${rabbitmq.response.queue.name}")
+    @Value("${app.rabbitmq.response.queue.name}")
     private String queueName;
 
     private String routingKey;

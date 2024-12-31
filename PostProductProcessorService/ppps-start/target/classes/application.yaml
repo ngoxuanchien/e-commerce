@@ -25,6 +25,7 @@ mp:
       product-request:
         connector: smallrye-rabbitmq
         content-type-override: text/plain
+        connection-count: 3
         exchange:
           name: product-request
         queue:

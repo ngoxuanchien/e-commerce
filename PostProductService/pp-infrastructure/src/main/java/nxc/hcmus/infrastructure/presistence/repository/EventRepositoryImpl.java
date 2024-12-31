@@ -17,7 +17,7 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
     public AbstractEvent saveEvent(AbstractEvent event) {
         return Optional.ofNullable(event)
-                .map(eventJpaRepositoryMapper::save)
+//                .map(eventJpaRepositoryMapper::save)
                 .orElseThrow(() -> new RuntimeException("Event is null"));
     }
 }
