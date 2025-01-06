@@ -9,6 +9,7 @@ import nxc.hcmus.infrastructure.distributed.redisson.RedisDistributedLocker;
 import nxc.hcmus.infrastructure.distributed.redisson.RedisDistributedService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +21,6 @@ public class CategoryCacheService {
     private final RedisDistributedService redisDistributedService;
     private final RedisInfraService redisInfraService;
     private final CategoryDomainService categoryDomainService;
-
 
     public Category getCategoryCache(UUID id, Long version) {
         Category category = redisInfraService.getObject(generateEventItemKey(id), Category.class);

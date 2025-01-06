@@ -6,8 +6,34 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:root1234}
     driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 20 # Số lượng tối đa kết nối
+      minimum-idle: 5       # Số lượng kết nối tối thiểu trong pool
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
     open-in-view: false
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+  data:
+    redis:
+      host: 192.168.1.21
+      port: 6379
+      password: ""
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+      connect-timeout: 30000
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 200
